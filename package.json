@@ -9,6 +9,9 @@
     "test": "ng test",
     "serve:ssr:bb-front-angular": "node dist/bb-front-angular/server/server.mjs"
   },
+  "engines": {
+    "node": ">=22"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.2.0",
