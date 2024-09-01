@@ -1,5 +1,26 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <app-input label="Email" [control]="email" type="email"></app-input>
-    <app-input label="Password" [control]="password" type="password"></app-input>
-    <app-button type="submit">Login</app-button>
-</form>
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg z-10">
+        <div class="text-center">
+            <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
+                Sign in to your account
+            </h2>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+                <div class="rounded-md shadow-sm -space-y-px">
+                    <app-input label="Email" [control]="email" type="email" class="mb-4"></app-input>
+                    <app-input label="Password" [control]="password" type="password" class="mb-4"></app-input>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="text-sm">
+                        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+                            Forgot your password?
+                        </a>
+                    </div>
+                </div>
+                <app-button type="submit"
+                    className="w-full py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                    Login
+                </app-button>
+            </form>
+        </div>
+    </div>
+</div>
