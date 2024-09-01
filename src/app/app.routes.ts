@@ -1,10 +1,14 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { LoginFormComponent } from './features/login/components/login-form/login-form.component';
+import { UserManagementComponent } from './features/user/components/user-management/user-management.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginFormComponent },
   {
-    path: '',
-    component: HomeComponent,
-    title: 'Home',
+    path: 'users',
+    component: UserManagementComponent,
+    canActivate: [AuthGuard],
   },
 ];

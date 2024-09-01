@@ -1,8 +1,0 @@
-<div *ngIf="user$ | async as user; else noUser">
-    <h2>User Information</h2>
-    <p>Name: {{ user.name }}</p>
-    <p>Email: {{ user.email }}</p>
-</div>
-<ng-template #noUser>
-    <p>No user information available.</p>
-</ng-template>
