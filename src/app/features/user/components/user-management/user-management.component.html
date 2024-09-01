@@ -1,1 +1,16 @@
-<p>user-management works!</p>
+<div class="user-management">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <app-input label="Name" [control]="name"></app-input>
+        <app-input label="Email" [control]="email" type="email"></app-input>
+        <app-input label="Password" [control]="password" type="password"></app-input>
+        <app-button type="submit">Create User</app-button>
+    </form>
+
+    <hr>
+
+    <ul>
+        <li *ngFor="let user of users">
+            {{ user.name }} - {{ user.email }}
+        </li>
+    </ul>
+</div>
