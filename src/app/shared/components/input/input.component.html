@@ -1,1 +1,7 @@
-<p>input works!</p>
+<label>
+    {{ label }}
+    <input [formControl]="control" [type]="type">
+    @if (control.invalid && control.touched) {
+    <small>This field is required</small>
+    }
+</label>
