@@ -4,8 +4,12 @@ import { UserManagementComponent } from './features/user/components/user-managem
 import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginFormComponent },
+  {
+    path: '',
+    component: UserManagementComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'login', component: LoginFormComponent, canActivate: [AuthGuard] },
   {
     path: 'users',
     component: UserManagementComponent,
