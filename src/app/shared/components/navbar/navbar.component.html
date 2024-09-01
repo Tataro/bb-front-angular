@@ -1,11 +1,13 @@
-<nav class="navbar">
-    <div class="navbar-logo">
-        <img src="assets/logo.png" alt="Logo" />
-    </div>
-    <div class="navbar-right">
-        @if (userEmail) {
-        <span>{{ userEmail }}</span>
-        }
-        <button (click)="logout()">Logout</button>
+<nav class="bg-gray-800 p-4">
+    <div class="flex justify-between items-center">
+        <div class="navbar-logo">
+            <img src="assets/logo.png" alt="Logo" class="h-8">
+        </div>
+        <div class="flex items-center space-x-4">
+            <span *ngIf="userEmail" class="text-white">{{ userEmail }}</span>
+            <button (click)="logout()" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
+                Logout
+            </button>
+        </div>
     </div>
 </nav>
