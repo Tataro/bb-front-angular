@@ -19,10 +19,18 @@ export class AuthService {
 
   login(token: string): void {
     localStorage.setItem(this.tokenKey, token);
+    this.router.navigate(['/']);
   }
 
   logout(): void {
     localStorage.removeItem(this.tokenKey);
     this.router.navigate(['/login']);
+  }
+
+  getUserEmail(): string | null {
+    const token = localStorage.getItem(this.tokenKey);
+    // console.log('token', token);
+    // Assuming token contains the email in payload, otherwise, decode it here.
+    return token ? 'user@example.com' : null;
   }
 }

@@ -1,1 +1,4 @@
-<router-outlet />
+<ng-container *ngIf="!isLoading">
+    <app-navbar *ngIf="showNavbar" [userEmail]="userEmail"></app-navbar>
+    <router-outlet />
+</ng-container>
