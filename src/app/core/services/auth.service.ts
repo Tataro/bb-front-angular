@@ -1,4 +1,10 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  afterNextRender,
+  Inject,
+  Injectable,
+  PLATFORM_ID,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
@@ -8,13 +14,18 @@ import { Observable, of } from 'rxjs';
 export class AuthService {
   private tokenKey = 'authToken';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {}
 
   verifyToken(): Observable<boolean> {
-    const token = localStorage.getItem(this.tokenKey);
-    // console.log('token', !!token);
     // TODO: Mock validation with backend, replace with actual API call
-    return of(!!token); // Assume it's valid if token exists
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem(this.tokenKey);
+      return of(!!token);
+    }
+    return of(false);
   }
 
   login(token: string): void {
@@ -28,9 +39,12 @@ export class AuthService {
   }
 
   getUserEmail(): string | null {
-    const token = localStorage.getItem(this.tokenKey);
-    // console.log('token', token);
-    // Assuming token contains the email in payload, otherwise, decode it here.
-    return token ? 'user@example.com' : null;
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem(this.tokenKey);
+      // Assuming token contains the email in payload, otherwise, decode it here.
+      return token ? 'user@example.com' : null;
+    }
+
+    return null;
   }
 }
