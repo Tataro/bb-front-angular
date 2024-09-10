@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
         // console.log('isValid', isValid);
 
         if (isValid && currentUrl === '/login') {
-          this.router.navigate(['/users']); // Redirect to /users if token is valid and on login page
+          this.router.navigate(['/']); // Redirect to / if token is valid and on login page
           return false;
         }
 
